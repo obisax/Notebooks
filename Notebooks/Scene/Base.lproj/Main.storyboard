@@ -162,27 +162,17 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o82-eC-h4P">
-                                <rect key="frame" x="336" y="140" width="30" height="30"/>
-                                <state key="normal" title="Add"/>
-                                <connections>
-                                    <action selector="addPhoto:" destination="Tfw-tS-HD4" eventType="touchUpInside" id="0st-99-Z5A"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RRK-5A-UaG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="RRK-5A-UaG" firstAttribute="trailing" secondItem="o82-eC-h4P" secondAttribute="trailing" constant="48" id="2Bc-bi-hAv"/>
                             <constraint firstItem="bkc-fI-zyi" firstAttribute="top" secondItem="RRK-5A-UaG" secondAttribute="top" constant="10" id="3wx-Yl-YyK"/>
                             <constraint firstItem="RRK-5A-UaG" firstAttribute="trailing" secondItem="TdT-kO-BW3" secondAttribute="trailing" constant="40" id="Adq-5n-ILZ"/>
-                            <constraint firstItem="o82-eC-h4P" firstAttribute="top" secondItem="bkc-fI-zyi" secondAttribute="bottom" constant="8" id="Fv7-GU-5ae"/>
                             <constraint firstItem="TdT-kO-BW3" firstAttribute="top" secondItem="3VM-jI-cUr" secondAttribute="bottom" constant="20" id="H1s-Vv-V6n"/>
                             <constraint firstItem="bkc-fI-zyi" firstAttribute="centerX" secondItem="d82-Wz-1gL" secondAttribute="centerX" id="Hyp-Ra-SJ5"/>
                             <constraint firstItem="bkc-fI-zyi" firstAttribute="leading" secondItem="RRK-5A-UaG" secondAttribute="leading" constant="40" id="KJ1-6O-oSc"/>
                             <constraint firstItem="TdT-kO-BW3" firstAttribute="leading" secondItem="RRK-5A-UaG" secondAttribute="leading" constant="40" id="R4d-zu-a5L"/>
                             <constraint firstItem="RRK-5A-UaG" firstAttribute="bottom" secondItem="TdT-kO-BW3" secondAttribute="bottom" constant="10" id="RUg-Kd-n4y"/>
-                            <constraint firstItem="o82-eC-h4P" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RRK-5A-UaG" secondAttribute="leading" id="TTR-bS-qdN"/>
                             <constraint firstItem="3VM-jI-cUr" firstAttribute="centerX" secondItem="d82-Wz-1gL" secondAttribute="centerX" id="a8s-HZ-I5e"/>
                             <constraint firstItem="RRK-5A-UaG" firstAttribute="trailing" secondItem="3VM-jI-cUr" secondAttribute="trailing" constant="40" id="aaG-61-Lcu"/>
                             <constraint firstItem="TdT-kO-BW3" firstAttribute="centerX" secondItem="d82-Wz-1gL" secondAttribute="centerX" id="jLc-43-9do"/>
@@ -192,9 +182,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="ZzE-KS-kFG"/>
                     <connections>
-                        <outlet property="contentNote" destination="3VM-jI-cUr" id="IGi-Fz-Eo3"/>
-                        <outlet property="imageCollection" destination="TdT-kO-BW3" id="b2g-k5-xRE"/>
-                        <outlet property="titleNote" destination="bkc-fI-zyi" id="7Xc-Jq-R48"/>
+                        <outlet property="imageCollectionView" destination="TdT-kO-BW3" id="PDQ-OC-pfw"/>
+                        <outlet property="noteContentTextView" destination="3VM-jI-cUr" id="Ecj-OQ-L5o"/>
+                        <outlet property="noteTitleTextField" destination="bkc-fI-zyi" id="3Ar-7R-do6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oEw-1T-JqN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

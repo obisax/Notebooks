@@ -67,6 +67,7 @@ class NotesTests: XCTestCase {
         let note = NoteMO.createNote(managedObjectContext: managedObjectContext ,
                                      notebook: notebook!,
                                      title: "note1",
+                                     content: "Contenido",
                                      createdAt: Date())
         //crearun un note viewcontroller
         let noteViewController = NoteTableViewController(dataController: dataController)

@@ -56,35 +56,33 @@ class DetailNoteViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        initializeFetchResultsController()
+        title = "Details"
+        
         let addImageBarbuttonItem = UIBarButtonItem(title: "Add Image",
                                                     style: .done,
                                                     target: self,
                                                     action: #selector(addImage))
         
         navigationItem.rightBarButtonItem = addImageBarbuttonItem
-        setupNoteDetails()
-        setupTable()
-    }
-    
-    
-    private func setupNoteDetails() {
-        title = "Details"
+        
         guard note != nil else { return }
         noteTitleTextField?.text = note?.title
         noteContentTextView?.text = note?.contents
-    }
-
-    private func setupTable() {
+        initializeFetchResultsController()
+        
+   
+        
         collectionViewLayout.scrollDirection = .vertical
         imageCollectionView?.collectionViewLayout = collectionViewLayout
         imageCollectionView?.dataSource = self
         imageCollectionView?.delegate = self
-    }
 
+    }
+    
+    
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        print("desaparezco")
         guard let dataController = dataController,
               let note = note else { return }
         guard let titleNote = noteTitleTextField?.text else { return }

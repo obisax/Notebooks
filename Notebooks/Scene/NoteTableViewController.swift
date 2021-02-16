@@ -8,7 +8,9 @@
 import UIKit
 import CoreData
 
-class NoteTableViewController: UITableViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+class NoteTableViewController: UITableViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate,UISearchBarDelegate {
+    
+    @IBOutlet var searchView: UISearchBar?
     
     var dataController : DataController?
     var fetchResultsController : NSFetchedResultsController<NSFetchRequestResult>?
@@ -61,6 +63,7 @@ class NoteTableViewController: UITableViewController, UIImagePickerControllerDel
         initializeFetchResultsController()
         //crear un boton que abra el image picker y cuando se elija una imagen,se pueda agregar una nota con la imagen
         setupNavigationItem()
+        searchView?.delegate = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -97,6 +100,32 @@ class NoteTableViewController: UITableViewController, UIImagePickerControllerDel
         present(picker, animated: true, completion: nil)
     }
     
+    func notesFilter(title:String){
+        guard let dataController = dataController,
+              let notebook = notebook else {return}
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+        let noteCreateAtSortDescriptor = NSSortDescriptor(key: "createdAt", ascending: true)
+        fetchRequest.sortDescriptors = [noteCreateAtSortDescriptor]
+
+        fetchRequest.predicate = NSPredicate(
+            format: "(title CONTAINS[cd] %@) AND (notebook == %@)",
+            title, notebook)
+
+        let managedObjectContext = dataController.viewContext
+
+        fetchResultsController = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: managedObjectContext,
+            sectionNameKeyPath: nil,
+            cacheName: nil
+        )
+
+        do {
+            try fetchResultsController?.performFetch()
+        } catch {
+            fatalError("couldn't find notes \(error.localizedDescription) ")
+        }
+    }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true){[unowned self] in
             if let urlImage = info[.imageURL] as? URL{
@@ -110,6 +139,14 @@ class NoteTableViewController: UITableViewController, UIImagePickerControllerDel
         }
     }
   
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if (searchText.isEmpty){
+            initializeFetchResultsController()
+        }else{
+            notesFilter(title: searchText)
+        }
+        tableView.reloadData()
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return fetchResultsController?.sections?.count ?? 0

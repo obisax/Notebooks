@@ -65,9 +65,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="8yc-NV-2IC">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noteCellIdentifier" textLabel="2aw-Xe-HNx" detailTextLabel="isQ-HH-KUt" style="IBUITableViewCellStyleSubtitle" id="rPN-ps-YuY">
-                                <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
+                                <rect key="frame" x="0.0" y="72" width="414" height="55.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rPN-ps-YuY" id="YhO-y1-dRC">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
@@ -98,6 +103,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="Y1V-Lg-KgM"/>
                     <connections>
+                        <outlet property="searchView" destination="8yc-NV-2IC" id="lzB-BK-CMa"/>
                         <segue destination="Tfw-tS-HD4" kind="show" identifier="detailnotesegue" id="a4H-by-y0s"/>
                     </connections>
                 </tableViewController>
